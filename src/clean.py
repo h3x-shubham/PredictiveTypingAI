@@ -10,10 +10,10 @@ def load_raw_text(path: Path = DATA_PATH)-> str:
         return f.read()
     
 def clean_text(text: str) -> str:
-    text=text.lower()
-    text=re.sub(r"[^a-zA-Z0-9\s\.,;:'\"!?()-]", " ", text)
-    text=re.sub(r"\s+", " ", text).strip()
-    return text
+    text = text.lower()
+    text = re.sub(r"[^a-z\s]", " ", text)   # keep only a–z and spaces
+    text = re.sub(r"\s+", " ", text)        # collapse multiple spaces
+    return text.strip()
     
     
 def save_cleaned_text(text: str, path: Path = CLEANED_PATH):
